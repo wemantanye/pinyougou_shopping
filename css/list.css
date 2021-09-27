@@ -1,0 +1,140 @@
+/* 列表专有的样式 */
+.sk {
+    position: absolute;
+    left: 190px;
+    top: 30px;
+    border-left: 1px solid #c81523;
+    padding: 3px 0 0 14px;
+}
+.sk_list {
+    float: left;
+}
+.sk_list ul li {
+    float: left;
+}
+.sk_list ul li a {
+    display: block;
+    line-height: 47px;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+}
+.sk_con {
+    float: left;
+}
+.sk_con ul li {
+    float: left;
+}
+.sk_con ul li a {
+    display: block;
+    line-height: 47px;
+    padding: 0 20px;
+    font-size: 14px;
+}
+.sk_con ul li:last-child a::after {
+    content: '\e91e';
+    font-family: 'icomoon';
+}
+.sk_hd {
+    position: relative;
+    height: 140px;
+
+}
+.sk_hd h2 {
+    /* position: absolute;
+    line-height: 185px;
+    left: 582px; */
+    display: block;
+    text-align: center;
+    line-height: 100px;
+    color: #c81523;
+}
+.sk_hd p {
+    display: block;
+    line-height: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+.sk_hd .bg_line {
+    position: absolute;
+    top: 110px;
+    left: 500px;
+    width: 50px;
+    height: 1px;
+    background-color: #000;
+}
+.sk_hd .bg_line2 {
+    position: absolute;
+    top: 110px;
+    left: 645px;
+    width: 50px;
+    height: 1px;
+    background-color: #000;
+}
+/* 手机商品模块 */
+.sk_bd ul {
+    width: 100%;
+    height: 440px;
+} 
+.sk_bd ul li {
+    float: left;
+    width: 300px;
+}
+.sk_bd ul li div img {
+    width: 230px;
+    height: 290px;
+    padding-left: 70px;
+}
+.sk_bd ul li div p {
+    padding: 5px;
+    font-size: 12px;
+}
+.special_price {
+    width: 180px;
+    margin: 8px 5px 0 5px;
+}
+.special_price .real {
+    color: red;
+    font-size: 18px;
+}
+.special_price .price {
+    color: #999;
+    font-size: 10px;
+}
+.Selling_situation {
+    display: inline-flex;
+    font-size: 8px;
+    line-height: 12px;
+    color: #999;
+    margin: 0 5px 0 5px;
+}
+.Selling_situation .pro_bar {
+    float: left;
+    width: 80px;
+    height: 10px;
+    border: 1px solid red;
+    border-radius: 30px;
+    margin: 0 3px 0 3px;
+}
+.Selling_situation .pro_bar .bar_in {
+    float: left;
+    width: 80%;
+    height: 100%;
+    margin-left: 1  px;
+    background-color: red;
+}
+.sk_bd ul li .button {
+    width: 95%;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    background-color: red;
+}
+.sk_bd ul li .button a {
+    color: white;
+}
+
+

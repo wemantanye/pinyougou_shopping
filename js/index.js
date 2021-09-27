@@ -62,9 +62,10 @@ window.addEventListener('load', function () {
     // 左右按钮移动
     var num = 0; // 声明一个变量num用来记录点击次数
     var circle = 0; // 声明一个变量circle控制小圆圈的播放
-    // flag 节流阀
+    // flag 节流阀,创建节流阀用于控制轮播图点击次数过多的情况
     var flag = true;
-    arrow2.addEventListener('click',function() {
+    // 右边箭头的轮播图逻辑
+    arrow2.addEventListener('click', function () {
         if(flag) {
             flag = false; // 关闭节流阀
             // 如果走到最后复制的一张图片，此时，我们的ul要快速复原 left 改为 0
@@ -72,44 +73,47 @@ window.addEventListener('load', function () {
                 ul.style.left = 0;
                 num = 0;
             }
+            if (num == 4) {
+                ul.style.left = 0;
+                num = 0;
+            }
+            num++;
+            animate(ul, -num * focus.offsetWidth,function() {
+                flag = true; // 打开节流阀
+            });
+            // 点击右侧按钮，小圆圈跟着一起变化，可以再声明一个变量circle控制小圆圈的播放
+            circle++;
+            // 如果circle == 4，说明走到最后我们克隆的这张图片了，我们就复原
+            if (circle == ol.children.length) {
+                circle = 0;
+            }
+            circleChange();
         }
-    })
-    // 右边箭头的轮播图逻辑
-    arrow2.addEventListener('click', function () {
-        if (num == 4) {
-            ul.style.left = 0;
-            num = 0;
-        }
-        num++;
-        animate(ul, -num * focus.offsetWidth,function() {
-            flag = true; // 打开节流阀
-        });
-        // 点击右侧按钮，小圆圈跟着一起变化，可以再声明一个变量circle控制小圆圈的播放
-        circle++;
-        // 如果circle == 4，说明走到最后我们克隆的这张图片了，我们就复原
-        if (circle == ol.children.length) {
-            circle = 0;
-        }
-        circleChange();
-    })
+    });
 
     // 左箭头的轮播图成绩
     arrow1.addEventListener('click', function () {
-        if (num == 0) {
-            num = ul.children.length - 1;
-            ul.style.left = -num * focusWidth + 'px';
+        if(flag) {
+            flag = false; // 关闭节流阀
+
+            if (num == 0) {
+                num = ul.children.length - 1;
+                ul.style.left = -num * focusWidth + 'px';
+            }
+            num--;
+            animate(ul, -num * focus.offsetWidth,function() {
+                flag = true;
+            });
+            // 点击左侧按钮，小圆圈跟着一起变化，可以再声明一个变量circle控制小圆圈的播放
+            circle--;
+            // 如果circle < 0，说明走到最后我们克隆的这张图片了，我们就复原
+            // if(circle < 0) {
+            //     circle = ol.children.length - 1;
+            // }
+            circle = circle < 0 ? ol.children.length - 1 : circle;
+            // 调用函数
+            circleChange();
         }
-        num--;
-        animate(ul, -num * focus.offsetWidth);
-        // 点击左侧按钮，小圆圈跟着一起变化，可以再声明一个变量circle控制小圆圈的播放
-        circle--;
-        // 如果circle < 0，说明走到最后我们克隆的这张图片了，我们就复原
-        // if(circle < 0) {
-        //     circle = ol.children.length - 1;
-        // }
-        circle = circle < 0 ? ol.children.length - 1 : circle;
-        // 调用函数
-        circleChange();
     });
 
     // 定义一个函数，用来实现小圆圈的排他思想
@@ -126,4 +130,5 @@ window.addEventListener('load', function () {
     var timer = setInterval(function () {
         arrow2.click();
     }, 2000)
+
 })

@@ -17,9 +17,10 @@ function animate(obj, target, callback) {  // 三个行参数，obj 目标对象
             // 在外设置一个变量timer，这样可以通过clearInterval方法停止定时
             clearInterval(obj.timer);
             // 定时器一结束判断有没有回调函数
-            if (callback) {
-                callback();
-            }
+            // if (callback) {
+            //     callback();
+            // }
+            callback && callback();  // 我们运用逻辑与，当左边为真才会执行右边，而左边为假就不执行右边，是上面代码更加简洁的写法
         }
         obj.style.left = obj.offsetLeft + step + "px"; // 获取当前位置并加像素
     }, 15);
